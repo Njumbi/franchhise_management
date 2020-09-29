@@ -1,0 +1,79 @@
+<%- include('./includes/head') %>
+
+<body>
+    <%- include('./includes/navbar') %>
+    <div class="container" style="margin-top: 10px">
+        <div class="row" style="margin: 6px; float: right;">
+            <button type="button" class="btn btn-outline-dark btn-lg" data-toggle="modal"
+                data-target="#addProductModal">Add
+                Product</button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="add_product_form" action="/upload" method="post" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <input type="hidden" name="_csrf" value="<%=csrfToken %>" id="csrf">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect2">Image</label>
+                                <input type="file" accept="image/*" name="photo" id="product_img" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect2"> Name</label>
+                                <input type="text" class="form-control" id="product_name" placeholder="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect2"> Size</label>
+                                <input type="text" class="form-control" id="product_size" placeholder="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect2"> Quantity</label>
+                                <input type="number" class="form-control" id="product_qty" placeholder="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect2"> Brand</label>
+                                <input type="text" class="form-control" id="product_brand" placeholder="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect2"> Price</label>
+                                <input type="number" class="form-control" id="product_price" placeholder="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="store names">Select a store</label>
+                                <select class="custom-select" id="productStore" required>
+                                    <% for (store of stores){ %>
+                                    <option value="<%= store.id %>"><%= store.storeName %></option>
+                                    <% } %>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect2"> Description</label>
+                                <textarea type="tessxt" class="form-control" id="product_desc" placeholder=""
+                                    required></textarea>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-bordered " id="products_table">
+
+        </table>
+    </div>
+
+
+    <%- include('./includes/footer') %>
