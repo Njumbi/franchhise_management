@@ -18,11 +18,7 @@ const fetchProducts = () => {
                 "defaultContent": "",
                 "title": "Name"
             },
-            {
-                'data': "description",
-                "defaultContent": "",
-                "title": "Description"
-            },
+
             {
                 'data': "size",
                 "defaultContent": "",
@@ -32,19 +28,27 @@ const fetchProducts = () => {
                 'data': "brand",
                 "defaultContent": "",
                 "title": "Brand"
-            }, {
-                'data': "quantity",
-                "defaultContent": "",
-                "title": "Quantity"
-            }, {
+            },
+            {
                 'data': "price",
                 "defaultContent": "",
                 "title": "P.Item"
+            },
+
+            {
+                'data': "quantiny",
+                "defaultContent": "",
+                "title": "Quantity"
             },
             {
                 'data': "storeId",
                 "defaultContent": "",
                 "title": "Store"
+            },
+            {
+                'data': "description",
+                "defaultContent": "",
+                "title": "Description"
             },
             {
                 'data': "image",
@@ -113,7 +117,8 @@ const addProducts = () => {
                 success: function (data) {
                     if (data.status == true) {
                         swal("Success", data.message, "success")
-                        $('#products_table').reload()
+                        $("#products_table").DataTable().ajax.reload(null, false);
+                        $('#addProductModal').modal('hide');
                         $('#add_product_form').reset()
                     } else {
                         swal("Error", data.message, "error")
