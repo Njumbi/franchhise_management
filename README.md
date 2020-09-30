@@ -1,7 +1,7 @@
 # franchhise_management
 This is an admin dashboard that allows users to add products, stores and also allows an admin to add a user
 
-![image] (https://github.com/Njumbi/franchhise_management/blob/master/Screenshot%202020-09-30%20at%2008.57.54.png)
+![image](https://github.com/Njumbi/franchhise_management/blob/master/Screenshot%202020-09-30%20at%2008.57.54.png)
 
 ## Installation
 run npm install --all after git clone.
