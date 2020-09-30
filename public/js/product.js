@@ -49,7 +49,10 @@ const fetchProducts = () => {
             {
                 'data': "image",
                 "defaultContent": "",
-                "title": "Image"
+                "title": "Image",
+                "render": function (data) {
+                    return '<img src="' + data + '" class="avatar" width="50" height="50"/>';
+                }
             },
             {
                 'data': "createdAt",
@@ -110,6 +113,8 @@ const addProducts = () => {
                 success: function (data) {
                     if (data.status == true) {
                         swal("Success", data.message, "success")
+                        $('#products_table').reload()
+                        $('#add_product_form').reset()
                     } else {
                         swal("Error", data.message, "error")
                     }
